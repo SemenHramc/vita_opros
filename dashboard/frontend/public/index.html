@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="VITA Опрос - Современная система управления опросами сотрудников" />
+  <meta name="keywords" content="опросы, управление командой, клиентская работа, HR" />
+  <meta name="author" content="VITA" />
+  
+  <!-- Theme color will be set by JS -->
+  <meta name="theme-color" content="#0a0e1a" id="theme-color-meta" />
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>" />
+  
+  <!-- Preconnect to Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <title>VITA Опрос - Современная система</title>
+  
+  <!-- Theme initialization script - runs before React loads -->
+  <script>
+    (function() {
+      // Get saved theme or detect system preference
+      var savedTheme = localStorage.getItem('vita-opros-theme');
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      
+      // Apply theme immediately to prevent flash
+      document.documentElement.setAttribute('data-theme', theme);
+      
+      // Update theme-color meta tag
+      var themeColor = theme === 'light' ? '#fafaf9' : '#0a0e1a';
+      document.getElementById('theme-color-meta').setAttribute('content', themeColor);
+    })();
+  </script>
+  
+  <style>
+    /* Critical CSS for faster initial render */
+    :root {
+      --initial-bg: #0a0e1a;
+      --initial-text: #f9fafb;
+    }
+    
+    [data-theme="light"] {
+      --initial-bg: #fafaf9;
+      --initial-text: #1c1917;
+    }
+    
+    body {
+      margin: 0;
+      background: var(--initial-bg);
+      color: var(--initial-text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    
+    #root {
+      min-height: 100vh;
+    }
+    
+    /* Loading screen while JS loads */
+    .initial-loading {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: var(--initial-bg);
+      gap: 20px;
+      transition: background 0.3s ease;
+    }
+    
+    .initial-loading-spinner {
+      width: 48px;
+      height: 48px;
+      border: 3px solid currentColor;
+      border-color: currentColor transparent currentColor transparent;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      opacity: 0.3;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    .initial-loading-text {
+      color: var(--initial-text);
+      font-size: 14px;
+      opacity: 0.6;
+    }
+  </style>
+</head>
+<body>
+  <div id="root">
+    <div class="initial-loading">
+      <div class="initial-loading-spinner"></div>
+      <span class="initial-loading-text">Загрузка приложения...</span>
+    </div>
+  </div>
+</body>
+</html>
